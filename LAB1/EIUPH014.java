@@ -13,9 +13,9 @@ class Main {
 
     public static void solve(int n) {
         int[] arr = new int[n];
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
-
+        }
         int cnt = 0;
         while (cnt <= 1000) {
             boolean same = true;
