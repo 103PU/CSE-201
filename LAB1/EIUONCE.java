@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -7,38 +6,37 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 class EIUONCE {
+	static InputReader sc = new InputReader(System.in);
+
 	public static void main(String[] args) {
-		InputReader sc = new InputReader(System.in);
-		int t = sc.nextInt();
-
-		while (t-- > 0) {
+		StringBuilder sb = new StringBuilder();
+		int testcase = sc.nextInt();
+		while (testcase-- > 0) {
 			int n = sc.nextInt();
-			Map<Integer, Integer> countMap = new HashMap<>();
-
-			// Đếm số lần xuất hiện của mỗi phần tử
+			HashMap<Integer, Integer> map = new HashMap<>();
 			for (int i = 0; i < n; i++) {
 				int num = sc.nextInt();
-				countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+				map.put(num, map.getOrDefault(num, 0) + 1);
 			}
 
-			// Lấy các phần tử chỉ xuất hiện 1 lần và sắp xếp
 			Set<Integer> resultSet = new TreeSet<>();
-			for (int num : countMap.keySet()) {
-				if (countMap.get(num) == 1) {
-					resultSet.add(num);
+			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+				if (entry.getValue() == 1) {
+					resultSet.add(entry.getKey());
 				}
 			}
 
-			// In kết quả
 			boolean first = true;
 			for (int num : resultSet) {
-				if (!first)
-					System.out.print(" ");
-				System.out.print(num);
+				if (!first) {
+					sb.append(" ");
+				}
+				sb.append(num);
 				first = false;
 			}
-			System.out.println();
+			sb.append("\n");
 		}
+		System.out.println(sb);
 	}
 
 	static class InputReader {
@@ -88,5 +86,4 @@ class EIUONCE {
 			return Long.parseLong(next());
 		}
 	}
-
 }
