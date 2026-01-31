@@ -29,8 +29,8 @@ class EIUGIFT {
         long maxsum = -1;
         while (x < y) {
             long total = price[x] + price[y];
-            long difference = price[y] - price[x];
             if (total <= amount) {
+                long difference = price[y] - price[x];
                 if (total > maxsum) {
                     maxsum = total;
                     minifference = difference;

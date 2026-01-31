@@ -11,11 +11,11 @@ class EIUPH014 {
             if (n == 0) {
                 break;
             }
+
             int[] arr = new int[n];
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = sc.nextInt();
             }
-
             int loop = 0;
             while (loop <= 1000) {
                 boolean isSame = true;
@@ -33,7 +33,9 @@ class EIUPH014 {
                 }
                 loop++;
             }
-            if (loop > 1000) {
+            if (loop > 1000)
+
+            {
                 sb.append(-1).append("\n");
             }
 
@@ -43,17 +45,13 @@ class EIUPH014 {
     }
 
     public static int[] countDiff(int[] arr) {
-        int[] temp = new int[arr.length];
-
-        for (int i = 1; i < arr.length; i++) {
-            if (i < arr.length - 1) {
-                temp[i - 1] = Math.abs(arr[i] - arr[i - 1]);
-            } 
-            if (i == arr.length - 1) {
-                temp[arr.length - 1] = Math.abs(arr[arr.length - 1] - arr[0]);
-            }
+        int firstValue = arr[0];
+        for (int i = 0; i < arr.length - 1; i++) {
+            arr[i] = Math.abs(arr[i] - arr[i + 1]);
         }
 
-        return temp;
+        // Cập nhật phần tử cuối cùng với giá trị đầu tiên đã lưu
+        arr[arr.length - 1] = Math.abs(arr[arr.length - 1] - firstValue);
+        return arr;
     }
 }

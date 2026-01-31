@@ -4,36 +4,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.*;
+
 class EIUONCE {
     static InputReader sc = new InputReader(System.in);
 
     public static void main(String[] args) {
         StringBuilder sb = new StringBuilder();
         int testcase = sc.nextInt();
+
         while (testcase-- > 0) {
             int n = sc.nextInt();
-            HashMap<Integer, Integer> map = new HashMap<>();
-            for (int i = 0; i < n; i++) {
-                int num = sc.nextInt();
-                map.put(num, map.getOrDefault(num, 0) + 1);
-            }
-
-            Set<Integer> resultSet = new TreeSet<>();
-            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-                if (entry.getValue() == 1) {
-                    resultSet.add(entry.getKey());
-                }
-            }
-
-            boolean first = true;
-            for (int num : resultSet) {
-                if (!first) {
-                    sb.append(" ");
-                }
-                sb.append(num);
-                first = false;
-            }
-            sb.append("\n");
+            // int arr[] = 
         }
         System.out.println(sb);
     }

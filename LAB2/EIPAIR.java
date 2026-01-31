@@ -2,38 +2,44 @@ import java.io.*;
 import java.util.*;
 
 class EIPAIR {
-    static InputReader reader = new InputReader(System.in);
+    static InputReader sc = new InputReader(System.in);
 
     public static void main(String[] args) {
         // Đọc số lượng testcase
-        int t = reader.nextInt();
-        
+        int t = sc.nextInt();
+
         StringBuilder sb = new StringBuilder();
-        
+
         while (t-- > 0) {
-            int n = reader.nextInt();
-            
-            // Map lưu tần suất xuất hiện: Key = Giá tiền, Value = Số lượng đã gặp
-            HashMap<Integer, Integer> map = new HashMap<>();
-            long ans = 0; // QUAN TRỌNG: Dùng long để tránh tràn số
-            
+            int n = sc.nextInt();
+            int[] arr = new int[n];
             for (int i = 0; i < n; i++) {
-                int price = reader.nextInt();
-                
-                // Lấy số lượng quà cùng giá đã gặp trước đó
-                int count = map.getOrDefault(price, 0);
-                
-                // Nếu trước đó đã có 'count' món quà giá 'price'
-                // Thì món quà hiện tại sẽ tạo được thêm 'count' cặp với các món trước đó
-                ans += count;
-                
-                // Cập nhật lại số lượng quà giá 'price'
-                map.put(price, count + 1);
+                arr[i] = sc.nextInt();
             }
-            
+
+            Arrays.sort(arr);
+
+            long ans = 0;
+            long count = 1; // Đếm số lượng phần tử giống nhau liên tiếp
+
+            for (int i = 1; i < n; i++) {
+                if (arr[i] == arr[i - 1]) {
+                    count++;
+                } else {
+                    if (count >= 2) {
+                        ans += count * (count - 1) / 2;
+                    }
+                    count = 1;
+                }
+
+                // Xử lý nhóm cuối cùng ngay trong vòng lặp (gọn hơn)
+                if (i == n - 1 && count >= 2) {
+                    ans += count * (count - 1) / 2;
+                }
+            }
             sb.append(ans).append("\n");
         }
-        
+
         System.out.print(sb);
     }
 
@@ -51,7 +57,8 @@ class EIPAIR {
             while (tokenizer == null || !tokenizer.hasMoreTokens()) {
                 try {
                     String line = reader.readLine();
-                    if (line == null) return null;
+                    if (line == null)
+                        return null;
                     tokenizer = new StringTokenizer(line);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
