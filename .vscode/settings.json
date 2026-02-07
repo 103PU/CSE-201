@@ -6,7 +6,8 @@
         "LYTHUYET",
         "PRACTICE-TEST1/L1",
         "PRACTICE-TEST1/L2",
-        "MIDTERM"
+        "MIDTERM",
+        "LAB3",
     ],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
@@ -14,7 +15,4 @@
     ],
     "code-runner.runInTerminal": true,
     "code-runner.saveFileBeforeRun": true,
-    "code-runner.executorMap": {
-        "java": "cd /d \"$dir\" && \"C:\\Program Files\\Java\\jdk-25\\bin\\javac.exe\" --enable-preview -d \"$workspaceRoot\\bin\" -cp \"$workspaceRoot\\lib\\*\" \"$fileName\" && \"C:\\Program Files\\Java\\jdk-25\\bin\\java.exe\" --enable-preview -XX:+ShowCodeDetailsInExceptionMessages -cp \"$workspaceRoot\\bin;$workspaceRoot\\lib\\*\" $fileNameWithoutExt"
-    }
 }
